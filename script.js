@@ -1,14 +1,11 @@
-fetch("http://ip-api.com/json/")
+fetch("https://ipapi.co/json/")
   .then(res => res.json())
   .then(data => {
-    document.getElementById("resultado").textContent =
-      `IP: ${data.query}
-País: ${data.country}
-Provincia: ${data.regionName}
-Ciudad: ${data.city}
-ISP: ${data.isp}`;
+    document.getElementById("ip").textContent = data.ip;
+    document.getElementById("city").textContent = data.city;
+    document.getElementById("country").textContent = data.country_name;
+    document.getElementById("isp").textContent = data.org;
   })
   .catch(err => {
-    document.getElementById("resultado").textContent = "Error al obtener datos";
     console.error(err);
   });
