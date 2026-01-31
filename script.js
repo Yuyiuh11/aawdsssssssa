@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("browser").textContent = navigator.userAgent;
-  document.getElementById("os").textContent = navigator.platform;
-  document.getElementById("lang").textContent = navigator.language;
-  document.getElementById("res").textContent =
-    screen.width + " x " + screen.height;
+  fetch("https://api.ipify.org?format=json")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("ip").textContent = data.ip;
+    })
+    .catch(() => {
+      document.getElementById("ip").textContent = "No se pudo obtener la IP";
+    });
 });
